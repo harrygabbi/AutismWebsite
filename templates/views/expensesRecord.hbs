@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/staffAttandance.css">
+</head>
+
+<body>
+    {{!-- {{>navbar}} --}}
+
+    <div class="staff-attendBox">
+        <h1>Expenses</h1>
+        <form action="/markAttandance" method="post">
+
+
+            <select id="Name" name = "Name">
+                <option value="empty" name="">Select</option>
+
+                {{#each result}}
+                <option value={{this.Name}} name={{this.Name}}>{{this.Name}}</option>
+                {{/each}}
+            </select>
+
+            <input type="date" id="date" name="date">
+            <input type="submit" value="mark">
+
+        </form>
+    </div>
+</body>
+
+
+
+<script type="text/javascript" src="../jq/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script>
+    {
+        {
+            !--$(document).ready(function () {
+                $("#button").click(function () {
+                    if ($("#cars").val() != "empty") {
+                        var region = $("#cars").val();
+                    }
+                });
+            }); --}
+    }
+</script>
+
+</html>

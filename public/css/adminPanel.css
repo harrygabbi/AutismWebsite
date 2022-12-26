@@ -1,0 +1,129 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  z-index: 1;
+}
+body:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #0037ff;
+  width: 60%;
+  height: 100vh;
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+          clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+  z-index: —1;
+}
+
+nav {
+  text-shadow: 2px 0 #000000, -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 0 -2px rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px rgb(0, 0, 0), 1px -1px rgb(0, 0, 0), -1px 1px rgb(0, 0, 0);
+  z-index: 1;
+  font-size: 17px;
+}
+
+.navbar-nav > li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.adminLoginBox {
+  z-index: 1;
+  margin-left: 20px;
+  margin: 25px auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 10px 50px -30px black;
+  width: 1200px;
+  border-radius: 30px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 500px;
+}
+.adminLoginBox .staff-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+.adminLoginBox .staff-control .AdminHeading {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+.adminLoginBox .staff-control button {
+  background-color: #0037ff;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.adminLoginBox .staff-control button:active {
+  scale: 0.95;
+  background-color: #002ccc;
+}
+.adminLoginBox .staff-control .buttonsText {
+  margin-top: 20px;
+  width: 53%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adminLoginBox .staff-control .buttonsText p {
+  margin: 5px;
+}
+.adminLoginBox .new-forms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+.adminLoginBox .new-forms .AdminHeading {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 50%;
+  text-align: center;
+}
+.adminLoginBox .new-forms button {
+  background-color: #0037ff;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.adminLoginBox .new-forms button:active {
+  scale: 0.95;
+  background-color: #002ccc;
+}
+.adminLoginBox .new-forms .buttonsText {
+  margin-top: 30px;
+  width: 53%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adminLoginBox .new-forms .buttonsText p {
+  margin: 5px;
+}/*# sourceMappingURL=adminPanel.css.map */

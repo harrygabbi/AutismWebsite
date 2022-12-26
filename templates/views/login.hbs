@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Document</title>
+</head>
+
+<style type="text/css">
+</style>
+
+<body>
+
+    <div class="container-fluid mt-3">
+
+        <div class="row">
+    <div class="col-sm-12 p-0">{{>navbar}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 p-3">
+        <div class="login-card">
+        <div class="column">
+            <h1>Login</h1>
+            <p>After login, you can use our services.</p>
+            <form action="">
+                <div class="form-item">
+                    <input type="text" class = "form-element" placeholder="Username or email">
+                </div>
+                <div class="form-item">
+                    <input type="password" class = "form-element" placeholder="Passwords">
+                </div>
+                <div class="form-checkbox-item">
+                    <input type="checkbox" id = "rememberMe" checked>
+                    <label for="rememberMe">Remember Me</label>
+                </div>
+                <div class="flex">
+                    <button type = "button">Sign In</button>
+                    <a href="#">Reset your password now</a>
+                </div>
+                <p style = "margin-top:3rem; margin-bottom: 1.5rem;">Other Sign In Methods</p>
+                <div class="social-buttons">
+                    <a href="#" class = "facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class = "twitter">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="#" class = "github">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="column">
+            <h2>Welcome to My website</h2>
+            <p style = "text-align: center;">If you don't have a account ,would you like to register right now?</p>
+            <a href="#">Sign Up</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+    </div>
+
+  
+
+  
+
+    <script type="text/javascript" src = "../jq/jquery.js"></script>
+    <script type="text/javascript" src = "../js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  z-index: 1;
+}
+body:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #0037ff;
+  width: 60%;
+  height: 100vh;
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+          clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+  z-index: —1;
+}
+
+nav {
+  text-shadow: 2px 0 #000000, -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 0 -2px rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px rgb(0, 0, 0), 1px -1px rgb(0, 0, 0), -1px 1px rgb(0, 0, 0);
+  z-index: 1;
+  font-size: 17px;
+}
+
+.navbar-nav > li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.forms {
+  z-index: 1;
+  margin-left: 20px;
+  margin: 25px auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 10px 50px -30px black;
+  width: 400px;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+.forms .formHeading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.forms .boxes {
+  margin: 40px;
+}
+.forms input {
+  margin: 0px 10px;
+}
+.forms input::-webkit-outer-spin-button,
+.forms input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.forms .submitButton {
+  text-align: center;
+}
+.forms .submitButton input {
+  padding: 5px 10px;
+  border-radius: 50px;
+  background: #0037ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.forms .submitButton input:active {
+  scale: 0.95;
+  background-color: #002ccc;
+}/*# sourceMappingURL=consultationForm.css.map */
