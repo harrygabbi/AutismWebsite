@@ -1,0 +1,38 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  z-index: 1;
+}
+body:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #54cdec;
+  width: 60%;
+  height: 100vh;
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+          clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+  z-index: —1;
+}
+
+nav {
+  text-shadow: 2px 0 #000000, -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 0 -2px rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px rgb(0, 0, 0), 1px -1px rgb(0, 0, 0), -1px 1px rgb(0, 0, 0);
+  z-index: 1;
+  font-size: 17px;
+}
+
+.navbar-nav > li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+  z-index: 1;
+  position: relative;
+}/*# sourceMappingURL=staffInfo.css.map */

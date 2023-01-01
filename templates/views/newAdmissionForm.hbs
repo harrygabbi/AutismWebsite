@@ -19,30 +19,36 @@
             <div class = "formHeading">
                 <h3>Consultation Form </h3>
             </div>
-            <form action="/consultationFormSubmit" method="post">
+            <form action="">
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Unique Id</span>
+                    <input type="number" class="form-control" placeholder="UniqueID" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="form-control" placeholder="Name" aria-label="Username" name = "Name"
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="number" class="form-control" placeholder="Age" aria-label="Username" name = "age"
+                    <input type="number" class="form-control" placeholder="Age" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Contact &nbsp;&nbsp;</span>
-                    <input type="tel" class="form-control" placeholder="Contact Number" aria-label="Username" name = "contactNumber"
+                    <input type="tel" class="form-control" placeholder="Contact Number" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Address &nbsp;</span>
-                    <input type="text" class="form-control" placeholder="Address" aria-label="Username" name = "address"
+                    <input type="text" class="form-control" placeholder="Address" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Reference</span>
-                    <input type="text" class="form-control" placeholder="Reference" aria-label="Username" name = "reference"
+                    <input type="text" class="form-control" placeholder="Reference" aria-label="Username"
                         aria-describedby="basic-addon1">
                 </div>
 
@@ -50,12 +56,6 @@
                     <input type="submit" value = "Submit">
                 </div>
             </form>
-
-            <div class="input-group mb-3">
-                {{#each result}}
-                    consultaion form added Unique ID of Customer is {{this.uniqueID}}
-                {{/each}}
-            </div>
         </div>
     </div>
 </body>

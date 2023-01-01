@@ -49,4 +49,46 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.staff-attendBox form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+.staff-attendBox form select {
+  margin: 10px;
+  width: 200px;
+  border-radius: 50px;
+  background-color: #000000;
+  color: white;
+  height: 30px;
+  text-align: center;
+}
+.staff-attendBox form input[type=date] {
+  margin: 10px;
+  width: 200px;
+  border-radius: 50px;
+  background-color: #000000;
+  color: white;
+  height: 30px;
+  text-align: center;
+}
+.staff-attendBox form input[type=submit] {
+  background-color: #0037ff;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+.staff-attendBox form input[type=submit]:active {
+  scale: 0.95;
+  background-color: #002ccc;
 }/*# sourceMappingURL=staffAttandance.css.map */

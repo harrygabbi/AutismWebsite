@@ -3,10 +3,10 @@ const path = require('path');
 const templates = path.join(__dirname , "../templates/views")
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "2003harry",
-  database: "joke"
+  host: "sql9.freesqldatabase.com",
+  user: "sql9586518",
+  password: "uLQmfLtQPj",
+  database: "sql9586518"
 });
 
 
@@ -15,10 +15,10 @@ exports.view = (req, res) => {
         if (err) throw err;
         console.log("Connected!");
 
-        con.query("SELECT Name FROM Login", function (err, result, fields) {
+        con.query("SELECT * FROM staffInfo", function (err, result, fields) {
 
         if(!err){
-            res.render('childAttandance', { result })
+            res.render('staffInfo', { result })
         }
         else{
             console.log(err);

@@ -1,6 +1,7 @@
 // @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 
 $theme-color : #0037ff;
+$input-color : #000000;
 
 * {
     padding: 0;
@@ -50,4 +51,49 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 10px;
+
+        select{
+            margin: 10px;
+            width: 200px;
+            border-radius: 50px;
+            background-color: $input-color;
+            color: white;
+            height: 30px;
+            text-align: center;
+        }
+        input[type="date"]{
+            margin: 10px;
+            width: 200px;
+            border-radius: 50px;
+            background-color: $input-color;
+            color: white;
+            height: 30px;
+            text-align: center;
+        }
+        input[type="submit"]{
+            background-color: $theme-color;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            cursor : pointer;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all .2s;
+
+            &:active{
+                scale: .95;
+                background-color: darken($theme-color, 10%)
+            }
+        }
+    }
 }

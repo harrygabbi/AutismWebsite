@@ -7,37 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/adminPanel.css">
+    <link rel="stylesheet" href="css/promoterPanel.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-    {{!-- {{>navbar}} --}}
+    {{>navbar}}
 
-    <div class="adminLoginBox">
+    <div class="container">
+      <div class="adminLoginBox">
 
 
         <div class="staff-control">
 
             <div class="AdminHeading">
-                <h1>Welcome Admin</h1>
+                <h1>Welcome Promoter</h1>
             </div>
             <div class="buttonsText">
-                <p>For Staff Attandance</p>
-                <a href="staffAttandance">
-                    <button>Staff Attandance</button>
+
+                <a href="staffInfo">
+                    <button>All Staff Information</button>
                 </a>
             </div>
 
             <div class="buttonsText">
-                <p>For Child Attandance</p>
-                <a href="childAttandance">
-                    <button>Child Attandance</button>
+
+                <a href="clientList">
+                    <button>All Client Information</button>
                 </a>
             </div>
 
             <div class="buttonsText">
-                <p>For Daily Expenses</p>
-                <a href="expensesRecord">
+
+                <a href="dailyExpenses">
                     <button>Expenses Record</button>
                 </a>
             </div>
@@ -45,30 +47,23 @@
 
         <div class="new-forms">
             <div class="AdminHeading">
-                <h1>Forms</h1>
+                <h1>Actions</h1>
             </div>
             <div class="buttonsText">
-                <p>For Consultation Form</p>
-                <a href="consultationForm">
-                    <button>Consultation Form</button>
+                <a href="seeStaffAttandance">
+                    <button>See Staff Attandance</button>
                 </a>
             </div>
 
             <div class="buttonsText">
-                <p>For Daily Entry Form</p>
-                <a href="dailyEntryForm">
-                    <button>Daily Entry Form</button>
-                </a>
-            </div>
 
-            <div class="buttonsText">
-                <p>For New Admission</p>
-                <a href="newAdmissionForm">
-                    <button>New Admission</button>
+                <a href="seeClientAttandance">
+                    <button>See Children Attandance</button>
                 </a>
             </div>
         </div>
 
+    </div>
     </div>
 </body>
 <script type="text/javascript" src="../jq/jquery.js"></script>

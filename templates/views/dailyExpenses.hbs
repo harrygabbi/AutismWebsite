@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/promoterPanel.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<style type="text/css">
+    input[type = "date"]{
+        border: 2px solid black;
+        border-radius: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+    {{>navbar}}
+
+    <div class="container">
+
+        <form action="dailyExpenses" method="post">
+            <input type="date" name = "date">
+            <input type="submit" value = "go">
+        </form>
+
+        {{!-- <form action="dailyExpenses1" mehod = "post">
+            <input type="submit" value = "see All">
+        </form> --}}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Expense ID</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Cost</th>
+                </tr>
+            </thead>
+            {{#each result}}
+            <tbody>
+                <tr>
+                    <th scope="row">{{this.expensesID}}</th>
+                    <td>{{this.purpose}}</td>
+                    <td>Rs. {{this.cost}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+
+    </div>
+</body>
+<script type="text/javascript" src="../jq/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+
+</html>
