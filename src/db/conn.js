@@ -18,7 +18,7 @@ exports.view = (req, res) => {
         if (err) throw err;
         console.log("Connected!");
 
-        con.query("SELECT Name FROM Login", function (err, result, fields) {
+        con.query("SELECT firstName FROM staffInfo", function (err, result, fields) {
 
         if(!err){
             res.render('staffAttandance', { result })
