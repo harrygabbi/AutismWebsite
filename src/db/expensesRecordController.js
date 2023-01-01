@@ -3,11 +3,11 @@ const path = require('path');
 const templates = path.join(__dirname , "../templates/views")
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "2003harry",
-  database: "joke"
-});
+    host: "sql9.freesqldatabase.com",
+    user: "sql9586518",
+    password: "uLQmfLtQPj",
+    database: "sql9586518"
+  });  
 
 
 exports.view = (req, res) => {
