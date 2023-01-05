@@ -12,7 +12,7 @@ var con = mysql.createConnection({
     host: "sql6.freesqldatabase.com",
     user: "sql6588369",
     password: "dtQ5iD5mXx",
-    database: "dtQ5iD5mXx"
+    database: "sql6588369"
 });
 con.connect(function(err) {
     if (err) throw err;
