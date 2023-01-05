@@ -7,7 +7,7 @@ var mysql = require('mysql2');
 //     user: process.env.DB_USER,
 //     password: process.env.DB_PASSWORD,
 //     database: process.env.DB_NAME
-});
+// });
 var con = mysql.createConnection({
     host: "sql6.freesqldatabase.com",
     user: "sql6588369",
