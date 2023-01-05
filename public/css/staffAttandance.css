@@ -42,8 +42,7 @@ nav {
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 10px 50px -30px black;
-  width: 450px;
-  height: 300px;
+  padding: 60px;
   border-radius: 30px;
   overflow: hidden;
   display: flex;
@@ -68,14 +67,8 @@ nav {
   height: 30px;
   text-align: center;
 }
-.staff-attendBox form input[type=date] {
+.staff-attendBox form input {
   margin: 10px;
-  width: 200px;
-  border-radius: 50px;
-  background-color: #000000;
-  color: white;
-  height: 30px;
-  text-align: center;
 }
 .staff-attendBox form input[type=submit] {
   background-color: #0037ff;

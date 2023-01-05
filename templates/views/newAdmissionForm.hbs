@@ -16,44 +16,60 @@
     <div class="forms">
 
         <div class="form-body">
-            <div class = "formHeading">
-                <h3>Consultation Form </h3>
+            <div class="formHeading">
+                <h3>New Admission</h3>
             </div>
-            <form action="">
+            <form action="newAdmission" method="post">
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Unique Id</span>
-                    <input type="number" class="form-control" placeholder="UniqueID" aria-label="Username"
+                    <span class="input-group-text" id="basic-addon1">First Name</span>
+                    <input type="text" class="form-control" placeholder="First Name" aria-label="Username"
+                        name="firstName" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Last Name </span>
+                    <input type="text" class="form-control" placeholder="Last Name" aria-label="Username"
+                        name="lastName" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">E-mail
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="text" class="form-control" placeholder="E-mail" aria-label="Username" name="email"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="form-control" placeholder="Name" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">Phone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="tel" class="form-control" placeholder="Phone Number" aria-label="Username"
+                        name="phoneNumber" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="input-group-text" id="basic-addon1">Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <input type="number" class="form-control" placeholder="Age" aria-label="Username"
+                        name="age" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Address &nbsp;&nbsp;&nbsp;</span>
+                    <input type="text" class="form-control" placeholder="Address" aria-label="Username" name = "address"
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Contact &nbsp;&nbsp;</span>
-                    <input type="tel" class="form-control" placeholder="Contact Number" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <select class="form-select" aria-label="Default select example" name = "package">
+                        <option selected>Select Package</option>
+                        {{#each result}}
+                            <option value={{this.nameOfSession}} name={{this.nameOfSession}}>{{this.nameOfSession}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Address &nbsp;</span>
-                    <input type="text" class="form-control" placeholder="Address" aria-label="Username"
-                        aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Reference</span>
-                    <input type="text" class="form-control" placeholder="Reference" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <select class="form-select" aria-label="Default select example" name = "mode">
+                        <option selected>Mode Of Payment</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Online">Online</option>
+                    </select>
                 </div>
 
-                <div class = "submitButton">
-                    <input type="submit" value = "Submit">
+                <div class="submitButton">
+                    <input type="submit" value="Submit">
                 </div>
             </form>
         </div>

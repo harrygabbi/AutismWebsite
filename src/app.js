@@ -1,10 +1,11 @@
 const express = require('express');
 require("./db/conn")
-// require('dotnev').config();
+require('dotenv').config();
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 const hbs = require('hbs');
+
 
 const staticpath = path.join(__dirname, "../public")
 const templates = path.join(__dirname, "../templates/views")
@@ -68,20 +69,19 @@ var mysql = require('mysql2');
 // }
 // insertIntoTable();
 
+var con = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
 // var con = mysql.createConnection({
-//   host: process.env.DB_HOST,
+//   host: "localhost",
 //   user: "root",
 //   password: "2003harry",
-//   database: process.env.DB_NAME
+//   database: "joke"
 // });
-
-var con = mysql.createConnection({
-  host: "sql9.freesqldatabase.com",
-  user: "sql9586518",
-  password: "uLQmfLtQPj",
-  database: "sql9586518",
-  port: 3306
-});
 
 
 con.connect(function(err) {
@@ -118,11 +118,17 @@ app.get("/consultationForm", (req, res) => {
 app.get("/dailyEntryForm", (req, res) => {
   res.render("dailyEntryForm");
 })
-app.get("/newAdmissionForm", (req, res) => {
-  res.render("newAdmissionForm");
+app.get("/addStaff", (req, res) => {
+    res.render("addStaff");
+})
+app.get("/newPassword", (req, res) => {
+    res.render("newPassword");
 })
 
-  
+
+
+const changePassword = require('./modules/changePassword');
+app.get("/changePassword", changePassword);
 
 const staffAttandance = require('./modules/user');
 app.get("/staffAttandance", staffAttandance);
@@ -148,6 +154,9 @@ app.get("/seeStaffAttandance", seeStaffAttandance);
 const seeClientAttandance = require('./modules/seeClientAttandance');
 app.get("/seeClientAttandance", seeClientAttandance);
 
+const newAdmission = require('./modules/newAdmissionForm');
+app.get("/newAdmissionForm", newAdmission);
+
 
 
 // var con = mysql.createConnection({
@@ -165,7 +174,7 @@ app.get("/seeClientAttandance", seeClientAttandance);
 app.post("/adminPanel", async (req, res) => {
     let username = req.body.name;
     let password = req.body.password;
-    con.query("select * from adminLogin where username = ? and password = ?", [username, password], function (error, results, fields) {
+    con.query("select * from adminLogin where username = ? and userPassword = ?", [username, password], function (error, results, fields) {
 
         if (results.length > 0) {
             res.redirect("/adminPanel");
@@ -179,8 +188,8 @@ app.post("/adminPanel", async (req, res) => {
 app.post("/promoterPanel", async (req, res) => {
     let username = req.body.name;
     let password = req.body.password;
-    con.query("select * from promoterLogin where username = ? and password = ?", [username, password], function (error, results, fields) {
-
+    con.query("select * from promoterLogin where username = ? and userPassword = ?", [username, password], function (error, results, fields) {
+        console.log(username + ": " + password);
         if (results.length > 0) {
             res.redirect("/promoterPanel");
         }
@@ -191,15 +200,47 @@ app.post("/promoterPanel", async (req, res) => {
 })
 
 app.post("/markAttandance", async (req, res) => {
-    let username = req.body.Name;
+    let username = req.body.staffid;
     let date = req.body.date;
 
-    con.query("insert into attandance values (?,?,1)", [username, date], function (error, results, fields) {
+    con.query("insert into staffAttandance values (?,?,'yes')", [username, date], function (error, results, fields) {
         if (results.length > 0) {
             alert("Attandance added");
         }
         else {
-            res.redirect("/")
+            res.redirect("staffAttandance")
+        }
+    })
+
+})
+
+app.post("/clientAttandance", async (req, res) => {
+    let username = req.body.uniqueid;
+    let date = req.body.date;
+
+    con.query("insert into clientAttandance values (?,?,'yes',?,?)", [username, date,date,date], function (error, results, fields) {
+        if (results.length > 0) {
+            alert("Attandance added");
+        }
+        else {
+            res.redirect("childAttandance")
+        }
+    })
+
+})
+
+app.post("/addExpenses", async (req, res) => {
+    let purpose = req.body.purpose;
+    let cost = req.body.cost;
+    let date = req.body.date;
+    console.log(req.body);
+    con.query("insert into dailyExpenses (cost,purpose,dateOfExpense) values (?,?,?);", [cost, purpose, date], function (error, results, fields) {
+        if (results.length > 0) {
+            alert("Attandance added");
+        }
+        else {
+            console.log("expensesRecord");
+            res.redirect('expensesRecord');
         }
     })
 
@@ -235,6 +276,34 @@ app.post("/seeStaffAttandance", async (req, res) => {
 
 })
 
+app.post("/changePassword", async (req, res) => {
+    const answer = req.body.answer;
+    con.query("select securityAnswer from promoterLogin", function (error, results, fields) {
+
+
+        if(answer === results[0]['securityAnswer']){
+            res.redirect('newPassword');
+        }
+        else{
+            res.redirect('/');
+        }
+    })
+})
+
+app.post("/newPassword", async (req, res) => {
+    const answer = req.body.answer;
+    con.query("update promoterLogin set userPassword = ? where username = 'promoter';", [answer],function (error, results) {
+        if(error){
+            console.log(error);
+        }
+        else{
+            if(results.affectedRows > 0){
+                res.redirect('promoter');
+            }
+        }
+    })
+})
+
 app.post("/consultationFormSubmit", async (req, res) => {
   let Name = req.body.Name;
   let age = req.body.age;
@@ -247,7 +316,7 @@ app.post("/consultationFormSubmit", async (req, res) => {
 
       }
       else {
-        con.query("select min(uniqueID) as uniqueID from  consultationForms", function (err, result, fields) {
+        con.query("select max(uniqueID) as uniqueID from  consultationForms", function (err, result, fields) {
 
           if(!err){
               res.render('consultationForm.hbs', { result })
@@ -258,10 +327,69 @@ app.post("/consultationFormSubmit", async (req, res) => {
         });
       }
   })
-
 })
+app.post("/newAdmission", async (req, res) => {
+    
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const phoneNumber = req.body.phoneNumber;
+    const address = req.body.address;
+    const age = req.body.age;
+    const package = req.body.package;
+    const mode = req.body.mode;
+
+    con.query("insert into clientInfo (firstName, lastName, email, phoneNumber,age,  address, package, modeOfPayment) values (?,?,?,?,?,?,?,?)", [firstName, lastName, email, phoneNumber,age, address, package, mode], function (error, results, fields) {
+        if (results.length > 0) {
+  
+        }
+        else {
+          con.query("select max(uniqueID) as uniqueID from  clientInfo", function (err, result, fields) {
+  
+            if(!err){
+                res.render('newAdmissionForm.hbs', { result })
+            }
+            else{
+                console.log(err);
+            }
+          });
+        }
+    })
+  })
+
+app.post("/addingStaff", async (req, res) => {
+
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const phoneNumber = req.body.phoneNumber;
+    const address = req.body.address;
+    const age = req.body.age;
+    const workType = req.body.workType;
+
+    con.query("insert into staffInfo (firstName, lastName, email, phoneNumber, address, age, workType) values (?,?,?,?,?,?,?)", [firstName, lastName, email, phoneNumber, address, age, workType], function (error, results, fields) {
+        if (results.length > 0) {
+  
+        }
+        else {
+          con.query("select max(staffID) as staffID from  staffInfo", function (err, result, fields) {
+  
+            if(!err){
+                res.render('addStaff.hbs', { result })
+            }
+            else{
+                console.log(err);
+            }
+          });
+        }
+    })
+  
+  })
 
 //server create
 app.listen(port, () => {
     console.log(`The server is running at ${port}`);
 })
+
+
+//pemoyi9286@prolug.com

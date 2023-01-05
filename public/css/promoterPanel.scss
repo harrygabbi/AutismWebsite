@@ -44,11 +44,11 @@ nav{
         background-color: white;
         border: 1px solid #ddd;
         box-shadow: 0 10px 50px -30px black;
+        padding: 20px;
         border-radius: 30px;
         overflow: hidden;
         display : grid;
         grid-template-columns: auto auto;
-        height: 500px;
     
         .staff-control{
             display: flex;
@@ -102,7 +102,6 @@ nav{
     
             .AdminHeading{
                 margin-top: 5px;
-                margin-bottom: 10px;
                 width: 50%;
                 text-align: center;
             }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/addStaff.css">
+</head>
+
+<body>
+    {{!-- {{>navbar}} --}}
+
+    <div class="forms">
+
+        <div class="form-body">
+            <div class = "formHeading">
+                <h3>Staff Information</h3>
+            </div>
+            <form action="/addingStaff" method="post">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">First Name </span>
+                    <input type="text" class="form-control" placeholder="First Name" aria-label="Username" name = "firstName"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Last Name </span>
+                    <input type="text" class="form-control" placeholder="Last Name" aria-label="Username" name = "lastName"
+                        aria-describedby="basic-addon1">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">E-Mail &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span>
+                    <input type="tel" class="form-control" placeholder="E-Mail" aria-label="Username" name = "email"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span>
+                    <input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" name = "phoneNumber"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Addreses&nbsp;&nbsp;</span>
+                    <input type="text" class="form-control" placeholder="Addreses" aria-label="Username" name = "address"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="text" class="form-control" placeholder="Age" aria-label="Username" name = "age"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Work Type</span>
+                    <input type="text" class="form-control" placeholder="Work Type" aria-label="Username" name = "workType"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class = "submitButton">
+                    <input type="submit" value = "Submit">
+                </div>
+            </form>
+
+            <div class="input-group mb-3">
+                {{#each result}}
+                    New StaffMember Added. StaffID is {{this.staffID}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../jq/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+
+</html>

@@ -50,7 +50,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
 }
 .forms .formHeading {
   text-align: center;
@@ -84,4 +84,4 @@ nav {
 .forms .submitButton input:active {
   scale: 0.95;
   background-color: #002ccc;
-}/*# sourceMappingURL=consultationForm.css.map */
+}/*# sourceMappingURL=addStaff.css.map */

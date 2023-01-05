@@ -15,17 +15,9 @@
 
     <div class="staff-attendBox">
         <h1>Expenses</h1>
-        <form action="/markAttandance" method="post">
-
-
-            <select id="Name" name = "Name">
-                <option value="empty" name="">Select</option>
-
-                {{#each result}}
-                <option value={{this.Name}} name={{this.Name}}>{{this.Name}}</option>
-                {{/each}}
-            </select>
-
+        <form action="/addExpenses" method="post">
+        <input type="text" class="form-control"   style = "border: 2px solid black" placeholder="purpose" name = "purpose">
+        <input type="number" class="form-control"  style = "border: 2px solid black" placeholder = "Cost" name = "cost">
             <input type="date" id="date" name="date">
             <input type="submit" value="mark">
 

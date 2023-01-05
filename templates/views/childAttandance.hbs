@@ -15,7 +15,7 @@
 
     <div class="staff-attendBox">
         <h1>CHILD ATTANDANCE</h1>
-        <form action="/markAttandance" method="post">
+        <form action="/clientAttandance" method="post">
 
 
             <select id="Name" name = "Name">
@@ -25,7 +25,7 @@
                 <option value={{this.firstName}} name={{this.firstName}}>{{this.firstName}}</option>
                 {{/each}}
             </select>
-
+            <input type="number" placeholder="Unique ID" name = "uniqueid">
             <input type="date" id="date" name="date">
             <input type="submit" value="mark">
 

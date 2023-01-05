@@ -22,10 +22,10 @@
                 <option value="empty" name="">Select</option>
 
                 {{#each result}}
-                <option value={{this.firstName}} name={{this.firstName}}>{{this.firstName}}</option>
+                <option value={{this.firstName}} {{this.lastName}} name={{this.firstName}} {{this.lastName}}>{{this.firstName}} {{this.lastName}}</option>
                 {{/each}}
             </select>
-
+            <input type="number" , placeholder = "staffid" name = "staffid">
             <input type="date" id="date" name="date">
             <input type="submit" value="mark">
 
