@@ -80,7 +80,7 @@ var con = mysql.createConnection({
   host: "sql6.freesqldatabase.com",
   user: "sql6588369",
   password: "dtQ5iD5mXx",
-  database: "josql6588369ke"
+  database: "dtQ5iD5mXx"
 });
 
 
