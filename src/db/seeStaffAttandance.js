@@ -17,8 +17,13 @@ exports.view = (req, res) => {
         con.query("SELECT * FROM staffAttandance where dateOfPresent = ?", [today], function (err, result, fields){
 
         if(!err){
-            res.render('seeStaffAttandance', { result })
-            console.log(result);
+            if(result.length > 0){
+                res.render('seeStaffAttandance', { result })
+                }
+                else{
+                    let result1 = {staffInfo : 1}
+                    res.render('seeStaffAttandance', { result1 })
+                }
         }
         else{
             console.log(err);

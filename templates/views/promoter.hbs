@@ -13,17 +13,20 @@
 
     <div class="adminLoginBox">
         <h1>Promoter Login</h1>
-        <form action="/promoterPanel" method="post">
+        <form action="/promoterPanel" method="post" id = "form">
             <div id="username">
-                <input type = "text" class = "form-element" placeholder = "Username" name = "name"> 
+                <input type = "text" class = "form-element" placeholder = "Username" name = "name" id = "username"> 
             </div>
             <div id="password">
-                <input type = "password" class = "form-element" placeholder = "Password" name = "password"> 
+                <input type = "password" class = "form-element" placeholder = "Password" name = "password" id = "password"> 
             </div>
             <div id = submit>
                 <input type = "submit" placeholder = "Submit">
             </div>
         </form>
+        {{#each results}}
+                    <div class="alert alert-danger" role="alert">Username or Password is incorrect</div>
+        {{/each}} 
     </div>
 </body>
 <script type="text/javascript" src = "../jq/jquery.js"></script>

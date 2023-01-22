@@ -18,17 +18,27 @@
         <form action="/markAttandance" method="post">
 
 
-            <select id="Name" name = "Name">
-                <option value="empty" name="">Select</option>
+            {{!-- <select id="Name" name = "Name"> --}}
+                {{!-- <option value="empty" name="">Select</option> --}}
 
-                {{#each result}}
+                {{!-- {{#each result}}
                 <option value={{this.firstName}} {{this.lastName}} name={{this.firstName}} {{this.lastName}}>{{this.firstName}} {{this.lastName}}</option>
-                {{/each}}
-            </select>
+                {{/each}} --}}
+            {{!-- </select> --}}
             <input type="number" , placeholder = "staffid" name = "staffid">
             <input type="date" id="date" name="date">
             <input type="submit" value="mark">
-
+                {{#each results}}
+                    <div class="alert alert-danger" role="alert">Attandance was already marked</div>
+                {{/each}} 
+                {{#each results1}}
+                    <div class="alert alert-danger" role="alert">StaffID is incorrect</div>
+                {{/each}} 
+                {{#each resul}}
+                <div class="alert alert-success" role="alert">
+                    Attandance was marked successfully
+                </div>
+    {{/each}} 
         </form>
     </div>
 </body>

@@ -1,6 +1,8 @@
 const express = require('express');
 require("./db/conn")
 require('dotenv').config();
+
+const cookie = require('cookie-parser')
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
@@ -15,73 +17,30 @@ app.use("/js", express.static(path.join(__dirname, "../node_modules/bootstrap/di
 app.use("/jq", express.static(path.join(__dirname, "../node_modules/jquery/dist")))
 app.use(express.urlencoded())
 app.use(express.static(staticpath))
+app.use(express.json())
 
 app.set("view engine", "hbs")
 app.set("views", templates);
 hbs.registerPartials(partialpath);
-
+app.use(cookie())
 
 var mysql = require('mysql2');
 
-// var insertIntoTable = async () =>{
-//   const connection = await mysql.createConnection({
-//     host: "sql9.freesqldatabase.com",
-//     user: "sql9586518",
-//     password: "uLQmfLtQPj",
-//     database: "sql9586518",
-//     port: 3306
-//   })
 
-//   try {
-//     await connection.query(
-//       "INSERT INTO sample VALUES (1, 'HARRY')"
-//     )
-//     console.log("inserted");
-
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// var insertIntoTable = async () =>{
-//   const connection = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "2003harry",
-//     database: "joke",
-//     port: 3306
-//   })
-
-//   try {
-//     connection.query(
-//       "INSERT INTO sample2 VALUES (1, 1)"
-//     )
-//     console.log("inserted");
-//   } catch (error) {
-//     console.log(error);
-//   }
-//   connection.query("SELECT * FROM sample", function (err, result, fields) {
-//     if(!err){
-//       console.log(result);
-//     }
-//     else{
-//         console.log(err);
-//     }});
-// }
-// insertIntoTable();
-
-// var con = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_NAME
-// });
 
 var con = mysql.createConnection({
-  host: "sql6.freesqldatabase.com",
-  user: "sql6588369",
-  password: "dtQ5iD5mXx",
-  database: "sql6588369"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
+
+// var con = mysql.createConnection({
+//   host: "sql6.freesqldatabase.com",
+//   user: "sql6588369",
+//   password: "dtQ5iD5mXx",
+//   database: "sql6588369"
+// });
 
 
 con.connect(function(err) {
@@ -123,6 +82,9 @@ app.get("/addStaff", (req, res) => {
 })
 app.get("/newPassword", (req, res) => {
     res.render("newPassword");
+})
+app.get("/gallery", (req, res) => {
+    res.render("gallery");
 })
 
 
@@ -194,7 +156,8 @@ app.post("/promoterPanel", async (req, res) => {
             res.redirect("/promoterPanel");
         }
         else {
-            res.redirect("/")
+            results = {username: username}
+            res.render("promoter", {results});
         }
     })
 })
@@ -203,27 +166,71 @@ app.post("/markAttandance", async (req, res) => {
     let username = req.body.staffid;
     let date = req.body.date;
 
-    con.query("insert into staffAttandance values (?,?,'yes')", [username, date], function (error, results, fields) {
-        if (results.length > 0) {
-            alert("Attandance added");
+    con.query("SELECT * FROM staffInfo where staffID = ?", [username ,date], function (error, results1, fields) {
+        if(results1.length > 0){
+            con.query("SELECT * FROM staffAttandance where staffID = ? and dateOfPresent = ?", [username ,date], function (error, results, fields) {
+                if(results.length <= 0){
+                    con.query("insert into staffAttandance values (?,?,'yes')", [username, date], function (error, resul, fields) {
+                        if (resul.length > 0) {
+                            alert("Attandance added");
+                        }
+                        else {
+                            resul = {staffID : username}
+                            console.log("attandance was marked")
+                            res.render("staffAttandance", {resul})
+                        }
+                    })
+                }
+                else{
+                    res.render('staffAttandance', { results })
+                }
+            })
+            
         }
-        else {
-            res.redirect("staffAttandance")
+        else{
+
+            results1 = {staffID: 1}
+
+            res.render('staffAttandance', { results1 })
+
         }
     })
+
+
+    
 
 })
 
 app.post("/clientAttandance", async (req, res) => {
     let username = req.body.uniqueid;
     let date = req.body.date;
-
-    con.query("insert into clientAttandance values (?,?,'yes',?,?)", [username, date,date,date], function (error, results, fields) {
-        if (results.length > 0) {
-            alert("Attandance added");
+    con.query("SELECT * FROM clientInfo where uniqueID = ?", [username ,date], function (error, results1, fields) {
+        if(results1.length > 0){
+            con.query("SELECT * FROM clientAttandance where uniqueID = ? and dateOfSession = ?", [username ,date], function (error, results, fields) {
+                if(results.length <= 0){
+                    con.query("insert into clientAttandance values (?,?,'yes',?,?)", [username, date,date,date], function (error, resul, fields) {
+                        if (resul.length > 0) {
+                            alert("Attandance added");
+                        }
+                        else {
+                            resul = {staffID : username}
+                            console.log("attandance was marked")
+                            res.render("childAttandance", {resul})
+                        }
+                    })
+                }
+                else{
+                    res.render('childAttandance', { results })
+                }
+            })
+            
         }
-        else {
-            res.redirect("childAttandance")
+        else{
+
+            results1 = {staffID: 1}
+
+            res.render('childAttandance', { results1 })
+
         }
     })
 
@@ -252,7 +259,14 @@ app.post("/dailyExpenses", async (req, res) => {
     con.query("SELECT * FROM dailyExpenses where dateOfExpense = ?", [date], function (err, result, fields) {
 
         if(!err){
-            res.render('dailyExpenses', { result })
+            
+            if(result.length > 0){
+                res.render('dailyExpenses', { result })
+                }
+                else{
+                    let result1 = {staffInfo : 1}
+                    res.render('dailyExpenses', { result1 })
+                }
         }
         else{
             console.log(err);
@@ -267,7 +281,13 @@ app.post("/seeStaffAttandance", async (req, res) => {
     con.query("SELECT * FROM staffAttandance where dateOfPresent = ?", [date], function (err, result, fields) {
 
         if(!err){
+            if(result.length > 0){
             res.render('seeStaffAttandance', { result })
+            }
+            else{
+                let result1 = {staffInfo : 1}
+                res.render('seeStaffAttandance', { result1 })
+            }
         }
         else{
             console.log(err);
@@ -344,10 +364,10 @@ app.post("/newAdmission", async (req, res) => {
   
         }
         else {
-          con.query("select max(uniqueID) as uniqueID from  clientInfo", function (err, result, fields) {
+          con.query("select max(uniqueID) as uniqueID from  clientInfo", function (err, res1, fields) {
   
             if(!err){
-                res.render('newAdmissionForm.hbs', { result })
+                res.render('newAdmissionForm.hbs', { res1 })
             }
             else{
                 console.log(err);

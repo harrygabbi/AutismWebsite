@@ -56,7 +56,7 @@
                     <select class="form-select" aria-label="Default select example" name = "package">
                         <option selected>Select Package</option>
                         {{#each result}}
-                            <option value={{this.nameOfSession}} name={{this.nameOfSession}}>{{this.nameOfSession}}</option>
+                            <option value={{this.cost}} name={{this.cost}}>${{this.cost}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -67,10 +67,14 @@
                         <option value="Online">Online</option>
                     </select>
                 </div>
-
                 <div class="submitButton">
                     <input type="submit" value="Submit">
                 </div>
+                <div class="input-group mb-3">
+                {{#each res1}}
+                    New Admission added Unique ID of Customer is {{this.uniqueID}}
+                {{/each}}
+            </div>
             </form>
         </div>
     </div>

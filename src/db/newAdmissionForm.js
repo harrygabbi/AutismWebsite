@@ -7,7 +7,7 @@ var con = require('./db');
 
 exports.view = (req, res) => {
 
-        con.query("SELECT nameOfSession FROM services", function (err, result, fields) {
+        con.query("SELECT cost FROM services", function (err, result, fields) {
 
         if(!err){
             res.render('newAdmissionForm', { result })

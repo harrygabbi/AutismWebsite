@@ -16,7 +16,13 @@ exports.view = (req, res) => {
         con.query("SELECT * FROM dailyExpenses where dateOfExpense = ?", [today], function (err, result, fields) {
 
             if (!err) {
+                if(result.length > 0){
                 res.render('dailyExpenses', { result })
+                }
+                else{
+                    let result1 = {staffInfo : 1}
+                    res.render('dailyExpenses', { result1 })
+                }
             }
             else {
                 console.log(err);

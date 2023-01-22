@@ -18,19 +18,31 @@
         <form action="/clientAttandance" method="post">
 
 
-            <select id="Name" name = "Name">
+            {{!-- <select id="Name" name = "Name">
                 <option value="empty" name="">Select</option>
 
                 {{#each result}}
                 <option value={{this.firstName}} name={{this.firstName}}>{{this.firstName}}</option>
                 {{/each}}
-            </select>
+            </select> --}}
             <input type="number" placeholder="Unique ID" name = "uniqueid">
             <input type="date" id="date" name="date">
             <input type="submit" value="mark">
 
         </form>
+        {{#each results}}
+                    <div class="alert alert-danger" role="alert">Attandance was already marked</div>
+                {{/each}} 
+                {{#each results1}}
+                    <div class="alert alert-danger" role="alert">ClientID is incorrect</div>
+                {{/each}} 
+                {{#each resul}}
+                <div class="alert alert-success" role="alert">
+                    Attandance was marked successfully
+                </div>
+    {{/each}} 
     </div>
+    
 </body>
 
 
