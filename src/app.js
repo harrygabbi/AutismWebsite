@@ -295,6 +295,26 @@ app.post("/seeStaffAttandance", async (req, res) => {
     });
 
 })
+app.post("/seeClientAttandance", async (req, res) => {
+    let date = req.body.date;
+
+    con.query("SELECT * FROM clientAttandance where dateOfSession = ?", [date], function (err, result, fields) {
+
+        if(!err){
+            if(result.length > 0){
+                res.render('seeClientAttandance', { result })
+            }
+            else{
+                let result1 = {staffInfo : 1}
+                res.render('seeClientAttandance', { result1 })
+            }
+        }
+        else{
+            console.log(err);
+        }
+    });
+
+})
 
 app.post("/changePassword", async (req, res) => {
     const answer = req.body.answer;

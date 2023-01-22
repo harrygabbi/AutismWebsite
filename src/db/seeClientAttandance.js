@@ -13,9 +13,10 @@ today = yyyy + '-' + mm + '-' + dd;
 
 exports.view = (req, res) => {
 
-        con.query("SELECT * FROM clientAttandance where dateOfSession = ?", [today], function (err, result, fields){
-
+        con.query("SELECT * FROM clientAttandance where dateOfSession = '2023-01-21'", [today], function (err, result, fields){
         if(!err){
+            
+
             if(result.length > 0){
                 res.render('seeClientAttandance', { result })
                 }
