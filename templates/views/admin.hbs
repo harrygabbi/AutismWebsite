@@ -22,7 +22,11 @@
             <div id = submit>
                 <input type = "submit" placeholder = "Submit">
             </div>
+            {{#each results}}
+                    <div class="alert alert-danger" id = "abc" role="alert">Username or Password is incorrect</div>
+        {{/each}} 
         </form>
+        
     </div>
 </body>
 <script type="text/javascript" src = "../jq/jquery.js"></script>

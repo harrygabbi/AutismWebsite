@@ -142,7 +142,8 @@ app.post("/adminPanel", async (req, res) => {
             res.redirect("/adminPanel");
         }
         else {
-            res.redirect("/")
+            results = {staffInfo : 1}
+            res.render("admin", {results})
         }
     })
 })
